@@ -17,10 +17,9 @@ object UsersListUi {
                 state.users.forEach {
                     Column {
                         Row {
-                            Text(text = it.userName)
-                            Text(text = it.userSurName)
+                            Text(text = it.name)
                         }
-                        Text(text = it.userSurName)
+                        Text(text = it.lastname)
 
                     }
 

@@ -2,6 +2,7 @@ package com.carlyadam.compose.ui
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
 import androidx.lifecycle.Observer
@@ -23,14 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         usersViewModel.responseLiveData.observe(this, Observer {
             usersState.users.addAll(it)
+            setContent {
+                UsersListUi.addList(usersState)
+            }
         })
         usersViewModel.errorLiveData.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
-
-        setContent {
-            UsersListUi.addList(usersState)
-        }
 
         getData()
     }

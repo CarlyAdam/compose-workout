@@ -16,10 +16,9 @@ object RepositoryModule {
     @Provides
     @ActivityRetainedScoped
     fun provideUserRepository(
-        apiService: ApiService,
-        context: Context
+        apiService: ApiService
     ): UserRepository {
-        return UserRepository(apiService, context)
+        return UserRepository(apiService)
     }
 
 }

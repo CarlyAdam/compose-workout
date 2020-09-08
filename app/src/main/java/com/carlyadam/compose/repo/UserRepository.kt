@@ -11,15 +11,14 @@ import java.io.IOException
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
-    private val apiService: ApiService,
-    private val context: Context
+    private val apiService: ApiService
 ) {
     suspend fun users(
     ) = safeApiCall(
         call = {
             getUsers()
         },
-        errorMessage = context.getString(R.string.no_connection)
+        errorMessage = "No connection"
     )
 
     private suspend fun getUsers(
@@ -28,7 +27,7 @@ class UserRepository @Inject constructor(
         Log.i("REEESSS", response.code().toString())
         if (response.isSuccessful)
             return Result.Success(response.body()!!)
-        return Result.Error(IOException(context.getString(R.string.no_connection)))
+        return Result.Error(IOException("No connection"))
     }
 
 
