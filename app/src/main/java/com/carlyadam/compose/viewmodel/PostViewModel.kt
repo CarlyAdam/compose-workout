@@ -5,27 +5,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.carlyadam.compose.data.api.Result
-import com.carlyadam.compose.data.model.User
-import com.carlyadam.compose.repo.UserRepository
+import com.carlyadam.compose.data.model.Post
+import com.carlyadam.compose.repo.PostRepository
 import com.carlyadam.compose.utils.Coroutines
 import kotlinx.coroutines.Job
 
-class UserViewModel @ViewModelInject constructor(
-    private val userRepository: UserRepository
+class PostViewModel @ViewModelInject constructor(
+        private val postRepository: PostRepository
 ) :
-    ViewModel() {
+        ViewModel() {
 
-    private var userJob: Job? = null
+    private var postJob: Job? = null
 
-    private val _responseLiveData = MutableLiveData<List<User>>()
-    val responseLiveData: LiveData<List<User>> get() = _responseLiveData
+    private val _responseLiveData = MutableLiveData<List<Post>>()
+    val responseLiveData: LiveData<List<Post>> get() = _responseLiveData
 
     private val _errorLiveData = MutableLiveData<String>()
     val errorLiveData: LiveData<String> get() = _errorLiveData
 
-    fun users() {
-        userJob = Coroutines.io {
-            when (val result = userRepository.users()) {
+    fun posts() {
+        postJob = Coroutines.io {
+            when (val result = postRepository.posts()) {
                 is Result.Success -> _responseLiveData.postValue(result.data)
                 is Result.Error -> _errorLiveData.postValue(result.exception.message)
             }
@@ -34,7 +34,7 @@ class UserViewModel @ViewModelInject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        userJob?.cancel()
+        postJob?.cancel()
     }
 
 

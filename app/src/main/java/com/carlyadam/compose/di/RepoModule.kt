@@ -1,8 +1,7 @@
 package com.carlyadam.compose.di
 
-import android.content.Context
 import com.carlyadam.compose.data.api.ApiService
-import com.carlyadam.compose.repo.UserRepository
+import com.carlyadam.compose.repo.PostRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +16,8 @@ object RepositoryModule {
     @ActivityRetainedScoped
     fun provideUserRepository(
         apiService: ApiService
-    ): UserRepository {
-        return UserRepository(apiService)
+    ): PostRepository {
+        return PostRepository(apiService)
     }
 
 }
