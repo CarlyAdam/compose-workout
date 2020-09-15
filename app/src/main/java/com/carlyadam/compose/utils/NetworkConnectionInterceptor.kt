@@ -2,6 +2,7 @@ package com.carlyadam.compose.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -17,14 +18,6 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
     }
 
     private fun checkConnection(): Boolean {
-        val connectivityManager =
-            applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        connectivityManager.activeNetworkInfo.also {
-            return it != null && it.isConnected
-        }
-    }
-
-   /* private fun checkConnection(): Boolean {
         val result: Boolean
         val connectivityManager =
             applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -40,5 +33,5 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
 
         return result
 
-    }*/
+    }
 }

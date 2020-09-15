@@ -10,6 +10,7 @@
 * [Coroutines](https://developer.android.com/topic/libraries/architecture/coroutines)
 * [Ktlint](https://github.com/jlleitschuh/ktlint-gradle)
 * Flow
+* [Leakcanary](https://square.github.io/leakcanary/)
 
 
 Feel free to make a PR.

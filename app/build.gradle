@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.carlyadam.compose"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -74,7 +74,7 @@ dependencies {
     // Integration with observables
     implementation "androidx.compose.runtime:runtime-livedata:$ui_version"
 
-    //dagger
+    //dagger hilt
     implementation "com.google.dagger:hilt-android:$daggerHiltAndroidVersion"
     implementation "com.google.dagger:hilt-android-testing:$daggerHiltAndroidVersion"
     implementation "androidx.hilt:hilt-common:$daggerHiltVersion"
@@ -96,6 +96,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
 
 
