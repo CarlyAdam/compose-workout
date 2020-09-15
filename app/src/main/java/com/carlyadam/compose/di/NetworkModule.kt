@@ -1,11 +1,13 @@
 package com.carlyadam.compose.di
 
+import android.content.Context
 import com.carlyadam.compose.data.api.ApiService
 import com.carlyadam.compose.utils.Constant.API_URL
-import com.carlyadam.compose.utils.HttpRequestInterceptor
+import com.carlyadam.compose.utils.NetworkConnectionInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,16 +20,15 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(HttpRequestInterceptor())
+            .addInterceptor(NetworkConnectionInterceptor(context))
             .build()
     }
 
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(API_URL)

@@ -8,6 +8,7 @@
 * [Retrofit](https://github.com/square/retrofit)
 * [Moshi](https://github.com/square/moshi)
 * [Coroutines](https://developer.android.com/topic/libraries/architecture/coroutines)
+* Flow
 
 
 Feel free to make a PR.
