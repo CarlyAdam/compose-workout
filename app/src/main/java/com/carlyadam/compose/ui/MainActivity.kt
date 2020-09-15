@@ -79,23 +79,26 @@ fun showError(error: String) {
 fun MaterialCardComponent(post: Post) {
     val context = ContextAmbient.current
     Card(
-            shape = RoundedCornerShape(4.dp),
-            modifier = Modifier
-                    .clickable(onClick = {
-                        Toast.makeText(
-                                context,
-                                "You tap on post: ${post.title}",
-                                Toast.LENGTH_SHORT
-                        ).show()
-                    })
-                    .padding(8.dp)
+        shape = RoundedCornerShape(4.dp),
+        modifier = Modifier
+            .clickable(
+                onClick = {
+                    Toast.makeText(
+                        context,
+                        "You tap on post: ${post.title}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            )
+            .padding(8.dp)
     ) {
-        ListItem(text = {
-            Text(text = post.id.toString())
-        }, secondaryText = {
-            Text(text = post.title)
-        })
+        ListItem(
+            text = {
+                Text(text = post.id.toString())
+            },
+            secondaryText = {
+                Text(text = post.title)
+            }
+        )
     }
 }
-
-

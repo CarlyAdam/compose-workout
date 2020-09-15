@@ -1,13 +1,8 @@
 package com.carlyadam.compose.data.api
 
-import android.accounts.NetworkErrorException
-import android.util.Log
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
-import retrofit2.HttpException
 import java.io.IOException
-import java.net.SocketTimeoutException
 
 suspend fun <T : Any> safeApiCall(
     call: suspend () -> Flow<Result<T>>,

@@ -32,6 +32,4 @@ class PostViewModel @ViewModelInject constructor(
             }
         }
     }
-
-
 }

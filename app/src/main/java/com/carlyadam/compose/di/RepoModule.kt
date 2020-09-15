@@ -19,5 +19,4 @@ object RepositoryModule {
     ): PostRepository {
         return PostRepository(apiService)
     }
-
 }

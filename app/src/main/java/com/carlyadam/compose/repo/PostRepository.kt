@@ -11,12 +11,10 @@ import kotlinx.coroutines.flow.flowOn
 import java.io.IOException
 import javax.inject.Inject
 
-
 class PostRepository @Inject constructor(
     private val apiService: ApiService
 ) {
-    suspend fun posts(
-    ) = safeApiCall(
+    suspend fun posts() = safeApiCall(
         call = {
             getPosts()
         },
