@@ -21,7 +21,7 @@ class PostRepository @Inject constructor(
         errorMessage = "No connection"
     )
 
-    private suspend fun getPosts(): Flow<Result<List<Post>>> = flow {
+    suspend fun getPosts(): Flow<Result<List<Post>>> = flow {
         val response = apiService.getPosts()
         if (response.isSuccessful) {
             emit(Result.Success(response.body()!!))
